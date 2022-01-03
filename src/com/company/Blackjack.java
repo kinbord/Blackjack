@@ -165,6 +165,9 @@ public class Blackjack {
         if (samHand.score() > dealerHand.score()) {
             winner = "sam";
         }
+        else if (samHand.score() == dealerHand.score()) {
+            winner = "draw";
+        }
         else {
             winner = "dealer";
         }
@@ -196,12 +199,20 @@ public class Blackjack {
     /**
      * Print the output of the current game
      * The output is the name of the winner and the hands of both players
+     * If the deck is empty, the game ends in a draw
      */
     private void printOutput() {
-        System.out.println(winner);
-        System.out.println("sam: " + samHand.printContent());
-        //System.out.println("sam: " + samHand.printContent() + " ; score: " + samHand.score());
-        System.out.println("dealer: " + dealerHand.printContent());
-        //System.out.println("dealer: " + dealerHand.printContent() + " ; score: " + dealerHand.score());
+        if (samHand.score() == 0 && dealerHand.score() == 0) {
+            System.out.println("draw");
+            System.out.println("sam: ");
+            System.out.println("dealer: ");
+        }
+        else {
+            System.out.println(winner);
+            System.out.println("sam: " + samHand.printContent());
+            //System.out.println("sam: " + samHand.printContent() + " ; score: " + samHand.score());
+            System.out.println("dealer: " + dealerHand.printContent());
+            //System.out.println("dealer: " + dealerHand.printContent() + " ; score: " + dealerHand.score());
+        }
     }
 }

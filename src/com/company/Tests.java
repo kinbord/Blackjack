@@ -25,7 +25,10 @@ public class Tests {
      * Above 21 for the dealer, Sam wins (5)
      * Above 21 for Sam, dealer wins (6)
      * Sam above 17 and dealer above sam but under 22, dealer wins (7)
-     * A set of 10 games with randomly generated decks (8)
+     * Deck getting empty before anyone could draw enough, whoever has the highest score win (8)
+     * Deck getting empty before anyone could draw enough, same score means a draw (9)
+     * Empty deck (10)
+     * A set of 10 games with randomly generated decks (11)
      */
     public static void runTests() {
         System.out.println("Test (1):");
@@ -51,6 +54,15 @@ public class Tests {
         System.out.println("-------------------------");
         System.out.println("Test (8):");
         test8();
+        System.out.println("-------------------------");
+        System.out.println("Test (9):");
+        test9();
+        System.out.println("-------------------------");
+        System.out.println("Test (10):");
+        test10();
+        System.out.println("-------------------------");
+        System.out.println("Test (11):");
+        test11();
         System.out.println("-------------------------");
     }
 
@@ -198,9 +210,52 @@ public class Tests {
 
     /**
      * Test 8
-     * A set of 10 games with randomly generated decks
+     * Deck getting empty before anyone could draw enough, whoever has the highest score win
      */
     public static void test8() {
+        LinkedList<Card> deckTest8 = new LinkedList<>();
+        Card card = new Card("C9");
+        deckTest8.add(card);
+        card = new Card("HA");
+        deckTest8.add(card);
+        card = new Card("D10");
+        deckTest8.add(card);
+        Blackjack test8 = new Blackjack(deckTest8);
+        test8.play();
+    }
+
+
+    /**
+     * Test 9
+     * Deck getting empty before anyone could draw enough, same score means a draw
+     */
+    public static void test9() {
+        LinkedList<Card> deckTest9 = new LinkedList<>();
+        Card card = new Card("CA");
+        deckTest9.add(card);
+        card = new Card("HA");
+        deckTest9.add(card);
+        Blackjack test9 = new Blackjack(deckTest9);
+        test9.play();
+    }
+
+
+    /**
+     * Test 10
+     * Empty deck
+     */
+    public static void test10() {
+        LinkedList<Card> deckTest10 = new LinkedList<>();
+        Blackjack test10 = new Blackjack(deckTest10);
+        test10.play();
+    }
+
+
+    /**
+     * Test 11
+     * A set of 10 games with randomly generated decks
+     */
+    public static void test11() {
 
         String[] fakeArgs = {};
 
