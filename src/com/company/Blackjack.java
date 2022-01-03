@@ -94,10 +94,17 @@ public class Blackjack {
      * Initialize the game by making both players draw two cards
      */
     private void initializeGame() {
-        samHand.addCard(deck.drawCard());
-        dealerHand.addCard(deck.drawCard());
-        samHand.addCard(deck.drawCard());
-        dealerHand.addCard(deck.drawCard());
+        if (deck.getSize() > 0) {
+            samHand.addCard(deck.drawCard());
+        }
+        if (deck.getSize() > 0) {
+            dealerHand.addCard(deck.drawCard());
+        }if (deck.getSize() > 0) {
+            samHand.addCard(deck.drawCard());
+        }
+        if (deck.getSize() > 0) {
+            dealerHand.addCard(deck.drawCard());
+        }
     }
 
 
@@ -134,7 +141,7 @@ public class Blackjack {
      * Sam plays and draw cards until his score is above 17
      */
     private void samPlay() {
-        while (samHand.score() < 17) {
+        while (samHand.score() < 17 && deck.getSize() > 0) {
             samHand.addCard(deck.drawCard());
         }
     }
@@ -144,7 +151,7 @@ public class Blackjack {
      * Dealer plays and draw cards until his score is above Sam's
      */
     private void dealerPlay() {
-        while (dealerHand.score() <= samHand.score()) {
+        while (dealerHand.score() <= samHand.score() && deck.getSize() > 0) {
             dealerHand.addCard(deck.drawCard());
         }
     }

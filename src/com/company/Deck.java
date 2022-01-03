@@ -14,10 +14,12 @@ import java.util.Scanner;
  * If not the deck is generated as a new 52 cards deck and then shuffled
  *
  * LinkedList<Card> content: A list of card representing the content of deck
+ * int size: The size of the deck
  */
 public class Deck {
 
     private final LinkedList<Card> content;
+    private int size;
 
 
     /**
@@ -26,6 +28,7 @@ public class Deck {
      */
     public Deck() {
         this.content = newRandomDeck();
+        this.size = content.size();
     }
 
 
@@ -38,6 +41,7 @@ public class Deck {
      */
     public Deck(LinkedList<Card> testDeck) {
         this.content = testDeck;
+        this.size = content.size();
     }
 
 
@@ -49,6 +53,7 @@ public class Deck {
      */
     public Deck(String file) {
         this.content = readDeckFromFile(file);
+        this.size = content.size();
     }
 
 
@@ -99,7 +104,6 @@ public class Deck {
 
         for(int i = 1 ; i < 52 ; i++) {
             if(i/13 == 0) {
-
                     if(i%13+1 == 11) {
                         card = new Card("CJ");
                         newDeck.add(card);
@@ -116,10 +120,8 @@ public class Deck {
                         card = new Card("C" + (i%13+1));
                         newDeck.add(card);
                     }
-
             }
             else if(i/13 == 1) {
-
                     if (i % 13 + 1 == 1) {
                         card = new Card("DA");
                         newDeck.add(card);
@@ -136,10 +138,8 @@ public class Deck {
                         card = new Card("D" + (i % 13 + 1));
                         newDeck.add(card);
                     }
-
             }
             else if(i/13 == 2) {
-
                     if (i % 13 + 1 == 1) {
                         card = new Card("HA");
                         newDeck.add(card);
@@ -156,10 +156,8 @@ public class Deck {
                         card = new Card("H" + (i % 13 + 1));
                         newDeck.add(card);
                     }
-
             }
             else if(i/13 == 3) {
-
                     if (i % 13 + 1 == 1) {
                         card = new Card("SA");
                         newDeck.add(card);
@@ -176,7 +174,6 @@ public class Deck {
                         card = new Card("S" + (i % 13 + 1));
                         newDeck.add(card);
                     }
-
             }
         }
 
@@ -193,9 +190,21 @@ public class Deck {
      * @return cardDrawn: The card drawn from the deck
      */
     public Card drawCard() {
+
         Card cardDrawn = content.getFirst();
         content.removeFirst();
+        size--;
 
         return cardDrawn;
+    }
+
+
+    /**
+     * Getter for size
+     *
+     * @return size: The amount of cards in the deck
+     */
+    public int getSize() {
+        return size;
     }
 }
