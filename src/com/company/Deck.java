@@ -81,7 +81,7 @@ public class Deck {
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println("An error occurred while trying to open a file.");
             e.printStackTrace();
         }
 
