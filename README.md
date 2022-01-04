@@ -1,7 +1,7 @@
 # Blackjack
 Short blackjack project
 
-Technical task for FINN.no second interview
+Technical task for an interview
 
 Update ideas:
 
